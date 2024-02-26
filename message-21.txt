@@ -8,8 +8,8 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-	Title = "Ruby Hub",
-	SubTitle = "by Deni210",
+	Title = "Grayx Hub",
+	SubTitle = "by Mkhoi209",
 	TabWidth = 160,
 	Size = UDim2.fromOffset(580, 460),
 	Acrylic = true,
@@ -17,11 +17,11 @@ local Window = Fluent:CreateWindow({
 	MinimizeKey = Enum.KeyCode.LeftControl
 })
 local Tabs = {
-	Main = Window:AddTab({ Title = "Main", Icon = "rbxassetid://14521909814" }),
-	farmsettings = Window:AddTab({ Title = "Farming Settings", Icon = "rbxassetid://14521909814" }),
+	Main = Window:AddTab({ Title = "Main", Icon = "rbxassetid://16149685127" }),
+	farmsettings = Window:AddTab({ Title = "Farming Settings", Icon = "rbxassetid://16149685127" }),
 	Settings = Window:AddTab({ Title = "UI Settings", Icon = "settings" })
 }
-local rubyhub = {
+local grayxhub = {
 	autoparrying = false,
 	stayunderground = true,
 	legitautoparry = false,
@@ -36,7 +36,7 @@ local rubyhub = {
 }
 
 function notify(title, content)
-	if title and not content then content = title; title = "Ruby Hub" end
+	if title and not content then content = title; title = "grayx Hub" end
 	Fluent:Notify({
 		Title = title,
 		Content = content,
@@ -55,7 +55,7 @@ end
 function isindontkill(player)
 	local dontkillname = player.Name
 	local dontkill = false
-	for i, v in pairs(rubyhub.dontkillonstandoff) do
+	for i, v in pairs(grayxhub.dontkillonstandoff) do
 		if v == dontkillname then
 			dontkill = true
 		end
@@ -65,24 +65,24 @@ end
 
 local Options = Fluent.Options
 
-notify("Thanks for using Ruby Hub!")
+notify("Thanks for using Grayx Hub!")
 notify("Inspired by Amir (wer denn sunst)")
 
 Tabs.Main:AddSection("Main")
 local autoparry = Tabs.Main:AddToggle("autoparry", {Title = "Auto Parry", Default = false })
 autoparry:OnChanged(function(toggled)
 	if toggled then
-		rubyhub.autoparrying = true
+		grayxhub.autoparrying = true
 		while toggled and task.wait() do
-			if rubyhub.autoparrying then
+			if grayxhub.autoparrying then
 				if islpalive() then
 					if #game.Players:GetPlayers() >= 4 then
 						for i, ball in next, workspace.Balls:GetChildren() do
 							if ball then
 								if game:GetService("Players").LocalPlayer.Character and game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-									if not rubyhub.legitautoparry then
+									if not grayxhub.legitautoparry then
 										if ball.Color == Color3.fromRGB(255, 0, 4) then
-											if rubyhub.stayunderground then
+											if grayxhub.stayunderground then
 												if timer < 100 then
 													game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = ball.CFrame * CFrame.new(3, -10.6343, (ball.Velocity).Magnitude * -0.5)
 												elseif timer > 100 and timer < 200 then
@@ -92,7 +92,7 @@ autoparry:OnChanged(function(toggled)
 												end
 											end
 										else
-											if rubyhub.stayunderground then
+											if grayxhub.stayunderground then
 												game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(ball.Position.X, -16.6343, ball.Position.z)
 											else
 												game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(ball.Position.X, ball.Position.y + 5, ball.Position.z)
@@ -153,67 +153,67 @@ autoparry:OnChanged(function(toggled)
 			end
 		end
 	else
-		rubyhub.autoparrying = false
+		grayxhub.autoparrying = false
 	end
 end)
 Tabs.Main:AddSection("Crates")
-local autoexplosion = Tabs.Main:AddToggle("autoexplosion", {Title = "Auto Open Explosion Crate", Default = false })
+local autoexplosion = Tabs.Main:AddToggle("autoexplosion", {Title = "tự động mở thùng hiệu ứng", Default = false })
 autoexplosion:OnChanged(function(toggled)
 	if toggled then
-		rubyhub.openexplosion = true
+		grayxhub.openexplosion = true
 	else
-		rubyhub.openexplosion = false
+		grayxhub.openexplosion = false
 	end
 end)
-local autosword = Tabs.Main:AddToggle("autosword", {Title = "Auto Open Sword Crate", Default = false })
+local autosword = Tabs.Main:AddToggle("autosword", {Title = "tự động mở thùng kiếm", Default = false })
 autosword:OnChanged(function(toggled)
 	if toggled then
-		rubyhub.opensword = true
+		grayxhub.opensword = true
 	else
-		rubyhub.opensword = false
+		grayxhub.opensword = false
 	end
 end)
 
 Tabs.Main:AddSection("Automation")
-local autovoteffa = Tabs.Main:AddToggle("autovoteffa", {Title = "Auto Vote for FFA", Default = false })
+local autovoteffa = Tabs.Main:AddToggle("autovoteffa", {Title = "tự động vote solo", Default = false })
 autovoteffa:OnChanged(function(toggled)
 	if toggled then
-		rubyhub.selectffa = true
+		grayxhub.selectffa = true
 	else
-		rubyhub.selectffa = false
+		grayxhub.selectffa = false
 	end
 end)
-local autovote2t = Tabs.Main:AddToggle("autovote2t", {Title = "Auto Vote for 2 Teams", Default = false })
+local autovote2t = Tabs.Main:AddToggle("autovote2t", {Title = "tự động vote team 2", Default = false })
 autovoteffa:OnChanged(function(toggled)
 	if toggled then
-		rubyhub.select2v2 = true
+		grayxhub.select2v2 = true
 	else
-		rubyhub.select2v2 = false
+		grayxhub.select2v2 = false
 	end
 end)
-local autovote4t = Tabs.Main:AddToggle("autovote4t", {Title = "Auto Vote for 4 Teams", Default = false })
+local autovote4t = Tabs.Main:AddToggle("autovote4t", {Title = ""tự động vote team 4", Default = false })
 autovote4t:OnChanged(function(toggled)
 	if toggled then
-		rubyhub.select4v4 = true
+		grayxhub.select4v4 = true
 	else
-		rubyhub.select4v4 = false
+		grayxhub.select4v4 = false
 	end
 end)
 local autospin = Tabs.Main:AddToggle("autospin", {Title = "Auto Spin", Default = false })
 autospin:OnChanged(function(toggled)
 	if toggled then
-		rubyhub.autospin = true
+		grayxhub.autospin = true
 	else
-		rubyhub.autospin = false
+		grayxhub.autospin = false
 	end
 end)
 Tabs.Main:AddSection("Cooldown")
 local skipcasec = Tabs.Main:AddToggle("skipcasec", {Title = "Disable Case Cooldown", Default = false })
 skipcasec:OnChanged(function(toggled)
 	if toggled then
-		rubyhub.skipcasecooldown = true
+		grayxhub.skipcasecooldown = true
 	else
-		rubyhub.skipcasecooldown = false
+		grayxhub.skipcasecooldown = false
 	end
 end)
 Tabs.Main:AddSection("Codes")
@@ -245,7 +245,7 @@ local whitelistplayer = Tabs.farmsettings:AddInput("whitelistplayer", {
 	Callback = function(playername)
 		for i, v in pairs(game.Players:GetPlayers()) do
 			if string.find(v.Name:lower(), playername:lower()) or string.find(v.DisplayName:lower(), playername:lower()) then
-				table.insert(rubyhub.dontkillonstandoff, v.Name)
+				table.insert(grayxhub.dontkillonstandoff, v.Name)
 			end
 		end
 	end
@@ -260,13 +260,13 @@ local unwhitelistplayer = Tabs.farmsettings:AddInput("unwhitelist", {
 		for i, v in pairs(game.Players:GetPlayers()) do
 			if string.find(v.Name:lower(), playername:lower()) or string.find(v.DisplayName:lower(), playername:lower()) then
 				local newtable = {}
-				for a, b in pairs(rubyhub.dontkillonstandoff) do
+				for a, b in pairs(grayxhub.dontkillonstandoff) do
 					if b ~= v.Name then
 	
 					table.insert(newtable, b)
 					end
 				end
-				rubyhub.dontkillonstandoff = newtable
+				grayxhub.dontkillonstandoff = newtable
 			end
 		end
 	end
@@ -276,24 +276,24 @@ Tabs.farmsettings:AddButton({
 	Title = "Clear List",
 	Description = "Clears don't kill List",
 	Callback = function()
-		rubyhub.dontkillonstandoff = {}
+		grayxhub.dontkillonstandoff = {}
 	end
 })
 Tabs.farmsettings:AddSection("Auto Parry Settings")
 local stayundergroundtoggle = Tabs.farmsettings:AddToggle("stayunderground", {Title = "Stay Underground", Default = true })
 stayundergroundtoggle:OnChanged(function(toggled)
 	if toggled then
-		rubyhub.stayunderground = true
+		grayxhub.stayunderground = true
 	else
-		rubyhub.stayunderground = false
+		grayxhub.stayunderground = false
 	end
 end)
 local legitap = Tabs.farmsettings:AddToggle("legitmode", {Title = "Legit Auto Parry Mode", Default = false })
 legitap:OnChanged(function(toggled)
 	if toggled then
-		rubyhub.legitautoparry = true
+		grayxhub.legitautoparry = true
 	else
-		rubyhub.legitautoparry = false
+		grayxhub.legitautoparry = false
 	end
 end)
 
@@ -301,27 +301,27 @@ end)
 task.spawn(function()
 	while task.wait() do
 		local toset = "";
-		for i, walterwhite in pairs(rubyhub.dontkillonstandoff) do
+		for i, walterwhite in pairs(grayxhub.dontkillonstandoff) do
 			toset = toset .. "\n" .. walterwhite
 		end
 		whitelistedplayers:SetDesc(toset)
-		if rubyhub.openexplosion then
+		if grayxhub.openexplosion then
 			game:GetService("ReplicatedStorage").Remotes.Store.RequestOpenExplosionBox:InvokeServer()
 		end
-		if rubyhub.opensword then
+		if grayxhub.opensword then
 			game:GetService("ReplicatedStorage").Remotes.Store.RequestOpenSwordBox:InvokeServer()
 		end
-		if rubyhub.selectffa then
+		if grayxhub.selectffa then
 			game:GetService("ReplicatedStorage").Remotes.UpdateVotes:FireServer("ffa")
-		elseif rubyhub.select2v2 then
+		elseif grayxhub.select2v2 then
 			game:GetService("ReplicatedStorage").Remotes.UpdateVotes:FireServer("2t")
-		elseif rubyhub.select4v4 then
+		elseif grayxhub.select4v4 then
 			game:GetService("ReplicatedStorage").Remotes.UpdateVotes:FireServer("4t")
 		end
-		if rubyhub.skipcasecooldown then
+		if grayxhub.skipcasecooldown then
 			game:GetService("ReplicatedStorage").Remotes.OpeningCase:FireServer(false)
 		end
-		if rubyhub.autospin then
+		if grayxhub.autospin then
 			game:GetService("ReplicatedStorage").Remotes.useSpin:InvokeServer()
 		end
 	end
@@ -331,7 +331,7 @@ SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
 SaveManager:IgnoreThemeSettings()
 SaveManager:SetIgnoreIndexes({})
-InterfaceManager:SetFolder("Ruby Hub")
+InterfaceManager:SetFolder("Grayx Hub")
 SaveManager:SetFolder("Blade Ball (Premium)")
 InterfaceManager:BuildInterfaceSection(Tabs.Settings)
 SaveManager:BuildConfigSection(Tabs.Settings)
